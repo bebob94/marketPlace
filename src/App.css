@@ -5,5 +5,15 @@
 
 .img {
   object-fit: cover;
-  height: 200px;
+}
+
+.troncare {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

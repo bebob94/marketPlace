@@ -1,7 +1,9 @@
 import { useEffect } from "react";
-import { Alert, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addToContainer } from "../redux/action/action";
+import Error from "./Error";
+import IsLoading from "./IsLoading";
 
 import Product from "./Product";
 
@@ -9,20 +11,23 @@ const ContainerProducts = () => {
   const dispatch = useDispatch();
 
   const products = useSelector((state) => state.productsData.products);
-  const hasError = useSelector((state) => state.hasError);
+  const hasError = useSelector((state) => state.productsData.hasError);
+  const isLoading = useSelector((state) => state.productsData.isLoading);
 
   useEffect(() => {
     dispatch(addToContainer("products"));
   }, []);
-  console.log(products);
 
   return (
     <Container>
       <Row>
-        {hasError && <Alert variant="danger">Error 404: file not found</Alert>}
-        {products.map((prod) => (
-          <Product key={prod.id} product={prod} />
-        ))}
+        {isLoading ? (
+          <IsLoading />
+        ) : hasError ? (
+          <Error />
+        ) : (
+          products.map((prod) => <Product key={prod.id} product={prod} />)
+        )}
       </Row>
     </Container>
   );

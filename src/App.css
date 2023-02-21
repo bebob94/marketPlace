@@ -1,0 +1,9 @@
+.myCard {
+  height: 400px !important;
+  margin: 20px 0;
+}
+
+.img {
+  object-fit: cover;
+  height: 200px;
+}

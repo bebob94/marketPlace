@@ -1,5 +1,6 @@
 import { Alert, Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { REMOVE_FROM_CART } from "../redux/action/action";
 
 const Cart = () => {
@@ -18,29 +19,31 @@ const Cart = () => {
               <Row>
                 {products.map((prod, i) => {
                   return (
-                    <Col
-                      xs={6}
-                      className="d-flex m-2 align-items-center"
-                      key={i}
-                    >
-                      <Button
-                        className="mx-3"
-                        onClick={() =>
-                          dispatch({ type: REMOVE_FROM_CART, payload: i })
-                        }
+                    <Link to={`/Detail/${prod.id}`}>
+                      <Col
+                        xs={6}
+                        className="d-flex m-2 align-items-center"
+                        key={i}
                       >
-                        🗑
-                      </Button>
-                      <img
-                        src={prod.thumbnail}
-                        alt={prod.title}
-                        style={{ height: "100px", width: "100px" }}
-                      />
-                      <Row>
-                        <h5 className="mx-3">{prod.title}</h5>
-                        <h5 className="mx-3">{prod.price}€</h5>
-                      </Row>
-                    </Col>
+                        <Button
+                          className="mx-3"
+                          onClick={() =>
+                            dispatch({ type: REMOVE_FROM_CART, payload: i })
+                          }
+                        >
+                          🗑
+                        </Button>
+                        <img
+                          src={prod.thumbnail}
+                          alt={prod.title}
+                          style={{ height: "100px", width: "100px" }}
+                        />
+                        <Row>
+                          <h5 className="mx-3">{prod.title}</h5>
+                          <h5 className="mx-3">{prod.price}€</h5>
+                        </Row>
+                      </Col>
+                    </Link>
                   );
                 })}
               </Row>

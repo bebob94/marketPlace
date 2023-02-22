@@ -45,10 +45,22 @@ const DetailProduct = () => {
             <ListGroup.Item>
               <strong>{product.title}</strong>
             </ListGroup.Item>
-            <ListGroup.Item>{product.brand}</ListGroup.Item>
-            <ListGroup.Item>{product.category}</ListGroup.Item>
-            <ListGroup.Item>{product.description}</ListGroup.Item>
-            <ListGroup.Item>{product.price} €</ListGroup.Item>
+            <ListGroup.Item>
+              <strong> Brand: </strong>
+              {product.brand}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <strong> Category: </strong>
+              {product.category}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <strong> Description: </strong>
+              {product.description}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <strong> Price: </strong>
+              {product.price} €
+            </ListGroup.Item>
           </ListGroup>
 
           <Button
